@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+}
+.left{
+    background-color:white;
+    height:100vh;
+    width: 50vw
+}
+.heading{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.logo{
+    height: 80px;
+    width: 120px;
+}
+p{
+    font-size: 20px;
+    font-weight:bold;
+    font-family: sans-serif;
+    letter-spacing: 5px;
+}
+.formfill{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.signin-form{
+   display: flex; 
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   width: 50%;
+   min-width: 238px;
+   padding: 0 40px;
+}
+.title{
+    font-size: 30px;
+    color:rgb(184, 49, 184); 
+    margin-bottom: 10px;
+}
+.input-field{
+    width: 100%;
+    height:50px;
+    background: #f0f0f0;
+    margin: 10px 0;
+    border:2px solid #df4adf;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+.input-icon{
+    flex: 1;
+    text-align: center;
+    color: #302e2e;
+    font-size: 18px;
+}
+.input-field input{
+    flex: 5;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 400;
+    color:#444;
+}
+.pass{
+    margin-left: 50px;
+    margin-bottom: 10px;
+    font-family: cursive; 
+}
+button{
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    background:#df4adf;
+    color: #fff;
+    font-weight: 600;
+    margin: 10px 0;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+button:hover{
+    background: #c03cc0;
+}
+.newto{
+    background:#c9c7c7;
+    width:100%;
+    height: 50px;
+    border-radius: 50px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 30px;
+   cursor: pointer;
+}
+h4{
+    font-size:small;
+}
+.download{
+    margin-top: 30px;
+}
+.right{
+    background-color: rgb(184, 49, 184);
+    height:100vh;
+    width: 50vw;
+}
+.heading2{
+    margin-top: 50px;
+    color: white;
+}
+.heading2 h1{
+    word-spacing: 10px;
+}
+.right p{
+    color: white;
+    font-size: 13px;
+    margin-top: 70px;
+}
+.signin-btn{
+    margin-top: 32px;
+    background-color: rgb(119, 23, 244);
+    color: white;
+    word-spacing: 5px;
+    letter-spacing: 2px;
+}
+.signin-btn:hover{
+    background-color: rgb(68, 12, 141);
+    color: white;
+    word-spacing: 5px;
+    letter-spacing: 2px;
+}
