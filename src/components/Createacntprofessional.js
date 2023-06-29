@@ -8,16 +8,25 @@ const Createacntprofessional = () => {
   const [register,setRegister]=useState({
     Firstname:"",
     Lastname:"",
+    Username:"",
     Email:"",
     MobileNumber:"",
+    Gender:"",
+    Age:"",
     password:"",
-    Conformpassword:"",
-    date:"",
-    gender:"",
+    Confirmpassword:"",
   });
-  const {Firstname,Lastname,Email,MobileNumber,password,Conformpassword}= register;
+  const {Firstname,Lastname,Username,Email,MobileNumber,password,Confirmpassword}= register;
   const onInputChange = (e) => {
     setRegister({...register,[e.target.name] : e.target.value});
+  };
+  const [selectedGender,setSelectedGender] = useState('');
+  const handleGenderChange = (Event) => {
+    setSelectedGender(Event.target.value);
+  };
+  const [date,setDate] = useState("none");
+  const onDateChange = (Event) => {
+    setDate(Event.target.value);
   };
   const onSubmit = async (e)=>{
     e.preventDefault();
@@ -25,37 +34,33 @@ const Createacntprofessional = () => {
 
     })
   }
-  const [selectedGender,setSelectedGender] = useState('');
-  const handleGenderChange = (e) => {
-    setSelectedGender(e.target.value);
-  };
-  const [date,setDate] = useState("none");
-  const onDateChange = (Event) => {
-    setDate(Event.target.value);
-  };
-  return (
+   return (
     <div className='usercontainer'>
     <form action=''>
       <h2>Create Account</h2>
       <div className='form-group'>
         <label htmlFor="">Firstname</label>
-        <input type='text'  className="form-control" required="required" name="Firstname"></input>
+        <input type='text'  className="form-control" required="required" name="Firstname" value={Firstname} onChange={onInputChange}></input>
       </div>
       <div className="form-group">
         <label htmlFor=''>Lastname</label>
-        <input type='text' className="form-control" required="required" name='Lastname'></input>
+        <input type='text' className="form-control" required="required" name='Lastname' value={Lastname} onChange={onInputChange}></input>
+      </div>
+      <div className="form-group">
+        <label htmlFor=''>Username</label>
+        <input type='text' className="form-control" required="required" name='Username' value={Username} onChange={onInputChange}></input>
       </div>
       <div className='form-group'>
         <label htmlFor=''>Email</label>
-        <input type='email' className='form-control' required="required" name='Email'></input>
+        <input type='email' className='form-control' required="required" name='Email' value={Email} onChange={onInputChange}></input>
       </div>
       <div className='form-group'>
         <label htmlFor=''>Mobile number</label>
-        <input type='number' className='form-control' required="required" name='MobileNumber'></input>
+        <input type='number' className='form-control' required="required" name='MobileNumber' value={MobileNumber} onChange={onInputChange}></input>
       </div>
       <div className='form-group'>
         <label htmlFor=''>Gender</label>
-        <select className='form-control' id="gender">
+        <select className='form-control' id="gender" value={selectedGender} onChange={handleGenderChange}>
           <option value=""></option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -63,19 +68,19 @@ const Createacntprofessional = () => {
         </select>
       </div>
       <div className='form-group'>
-        <label htmlFor=''>D.O.B</label>
+        <label htmlFor=''>Age</label>
         <input type="date" value={date} onChange={onDateChange} className='form-control' name="date"/>
       </div>
       <div className='form-group'>
         <label htmlFor=''>Password</label>
-        <input type='password' className='form-control' required="required" name='password'></input>
+        <input type='password' className='form-control' required="required" name='password' value={password} onChange={onInputChange}></input>
       </div>
       <div className='form-group'>
         <label htmlFor=''>Confirm Password</label>
-        <input type='password' className='form-control' required="required" name='Conformpassword'></input>
+        <input type='password' className='form-control' required="required" name='Confirmpassword' value={Confirmpassword} onChange={onInputChange}></input>
       </div>
       <div className="userregister">
-        <button  className="user-signup-btn" type="submit" value="Register">Sign up</button>
+        <button  className="user-signup-btn" type="submit" value="Register" onClick={onSubmit}>Sign up</button>
       </div>
       <p className='backsignin'>Already have an account?<Link style={{textDecoration:'none',fontSize:13}} to='/Professionallogin'>Login In</Link></p>
     </form>

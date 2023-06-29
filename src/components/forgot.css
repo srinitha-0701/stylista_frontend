@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.forgotcontainer{
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forgot-details{
+   background-color: rgb(247, 95, 95);
+   width: 60%;
+   height: 80vh;
+   border-radius: 15px;
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.passimage{
+    margin-top: 40px;
+}
+.forgot-head{
+    font-size: 15px;
+    margin-top: 20px;
+}
+.forgot-p{
+    font-weight: 100;
+    font-size: 20px;
+    margin-top: 20px;
+    word-spacing:normal;
+    letter-spacing: 0px;
+}
+.email-verify-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.finput-field{
+    width: 50%;
+    height:50px;
+    background-color: rgb(240, 232, 234);
+    margin: 10px 0;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.finput-field input{
+    flex: 5;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 400;
+    color:#444;
+}
+.next-btn{
+    margin-top: 20px;
+    height: 50px;
+    width: 120px;
+    font-size: 13px;
+    border-radius: 20px;
+    background-color:rgb(243, 63, 63);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+.next-btn:hover{
+    background-color:rgb(239, 126, 85); 
+    color: black;
+}

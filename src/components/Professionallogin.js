@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import './stylista.css';
 import logosmall from './images/logosmall.png'
 import {FaRegUser} from 'react-icons/fa';
@@ -8,8 +8,14 @@ import applelogo from './images/applelogo.png';
 import desktopimg from './images/desktopimg.jpeg';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import {AiOutlineEye} from 'react-icons/ai';
+import {AiOutlineEyeInvisible} from 'react-icons/ai'
 
 const Professionallogin = () => {
+  const [username,setUsername] = useState("");
+  const [password ,setPassword] = useState("");
+  const [visible,setVisible] = useState("");
+  const [rememberMe ,setRememberMe] = useState(false);
   let navigate = useNavigate();
   function signEvent() {
     navigate('/Userlogin');
@@ -23,10 +29,11 @@ const Professionallogin = () => {
         <div className='right'>
             <div className='heading2'>
                <h1>Welcome Back </h1>
+               <br></br>
                <h2>User</h2>
             </div>
             <br></br>
-            <p>"Log in to access your personalized beauty experience"</p>
+            <p className='quote'>"Log in to access your personalized beauty experience"</p>
             <br></br>
             <button type='text' className='signin-btn' onClick={signEvent}>Sign In</button>
             <div><img src={desktopimg} alt='desktop' style={{borderRadius:15,marginTop:40}}/></div>
@@ -34,7 +41,7 @@ const Professionallogin = () => {
         <div className='left'>
             <div className='heading'>
                 <img className='logo'src={logosmall} alt='logo'></img>
-                <p>STYLISTA</p>            
+                <p className='logoname'>STYLISTA</p>            
               </div>
               <br></br>
               <div className='formfill'>
@@ -42,14 +49,18 @@ const Professionallogin = () => {
                 <h2 className='title'>Professional Log In</h2>
                 <div className='input-field'>
                     <FaRegUser className='input-icon'/>
-                    <input type='text' placeholder='Email/Username'/>
+                    <input value={username} id='username' type='text' placeholder='Email/Username' onChange={(e) => setUsername(e.target.value)}/>
                 </div>
-                <div className='input-field'>
+                <div className='input-field' onClick={() => setVisible(!visible)}>
                     <FiLock className='input-icon'/>
-                    <input type='text' placeholder='Password'/>
+                    <input value={password} id='password' type={visible ? "text" : "password"}  placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                    { visible ? <AiOutlineEye className='input-icon'/> : <AiOutlineEyeInvisible className='input-icon'/>}
                 </div>
-                <div className='pass'><h5 style={{marginLeft:80}}><Link style={{textDecoration:'none'}} className='line' to="Forgotpassword">Forgot password ?</Link></h5></div>
-                <button type='submit'>Log In</button>
+                <div className='pass'>
+                  <label style={{fontSize:11,fontFamily:'sans-serif'}}><input style={{height:10,width:10}} type='checkbox' checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)}/>Remember me</label>
+                  <h5><Link style={{textDecoration:'none'}} className='forgot-line' to="/Forgotpassword">Forgot password ?</Link></h5>
+                </div>
+                <button className='login-btn' type='submit'>Log In</button>
                 <br></br>
                 <br></br>
                 <div className='newto'><h4 onClick={handlepClick}>New to stylista? SIGN UP</h4></div>

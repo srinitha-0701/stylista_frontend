@@ -20,7 +20,7 @@
     height: 80px;
     width: 120px;
 }
-p{
+.logoname{
     font-size: 20px;
     font-weight:bold;
     font-family: sans-serif;
@@ -30,7 +30,6 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 .signin-form{
    display: flex; 
@@ -43,7 +42,7 @@ p{
 }
 .title{
     font-size: 30px;
-    color:rgb(184, 49, 184); 
+    color:black;
     margin-bottom: 10px;
 }
 .input-field{
@@ -51,7 +50,7 @@ p{
     height:50px;
     background: #f0f0f0;
     margin: 10px 0;
-    border:2px solid #df4adf;
+    border:2px solid #827d7e;
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -74,7 +73,11 @@ p{
     color:#444;
 }
 .pass{
-    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 5px;
     margin-bottom: 10px;
     font-family: cursive; 
 }
@@ -83,7 +86,7 @@ button{
     height: 50px;
     border: none;
     border-radius: 50px;
-    background:#df4adf;
+    background:#ff505d;
     color: #fff;
     font-weight: 600;
     margin: 10px 0;
@@ -91,18 +94,18 @@ button{
     text-transform: uppercase;
 }
 button:hover{
-    background: #c03cc0;
+    background: #fa313f;
 }
 .newto{
     background:#c9c7c7;
     width:100%;
     height: 50px;
     border-radius: 50px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin-top: 30px;
-   cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    cursor: pointer;
 }
 h4{
     font-size:small;
@@ -111,7 +114,7 @@ h4{
     margin-top: 30px;
 }
 .right{
-    background-color: rgb(184, 49, 184);
+    background-color:#ff505d;
     height:100vh;
     width: 50vw;
 }
@@ -120,23 +123,30 @@ h4{
     color: white;
 }
 .heading2 h1{
-    word-spacing: 10px;
+    font-size: 40px;
+    word-spacing: 13px;
 }
-.right p{
+.heading2 h2{
+    font-size: 28px;
+}
+.quote{
     color: white;
-    font-size: 13px;
+    font-size: 15px;
+    word-spacing: 4px;
+    letter-spacing: 3px;
     margin-top: 70px;
+    
 }
 .signin-btn{
     margin-top: 32px;
-    background-color: rgb(119, 23, 244);
-    color: white;
+    background-color:white;
+    color: #ff505d;
     word-spacing: 5px;
     letter-spacing: 2px;
 }
 .signin-btn:hover{
-    background-color: rgb(68, 12, 141);
-    color: white;
+    background-color: whitesmoke;
+    color: #ff505d;
     word-spacing: 5px;
     letter-spacing: 2px;
 }
