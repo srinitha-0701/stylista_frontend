@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './stylista.css';
@@ -13,11 +14,32 @@ import {AiOutlineEyeInvisible} from 'react-icons/ai'
 
 
 const Userlogin = () => {
-    const [username,setUsername] = useState("");
-    const [password ,setPassword] = useState("");
+    // const [username,setUsername] = useState("");
+    // const [password ,setPassword] = useState("");
     const [visible,setVisible] = useState("");
     const [rememberMe ,setRememberMe] = useState(false);
     let navigate = useNavigate();
+    const [errorMessage,setErrorMessage] = useState("");
+    const[login,setLogin] = useState({
+        email:"",
+        password:""
+    });
+    const{email,password} = login;
+    const onInputChange = (e) => {
+        setLogin({...login,[e.target.name]:e.target.value})
+    }
+    const onSubmitLogin = async (e) => {
+        e.preventDefault();
+        await axios.post(`http://localhost:5000/sign/login`,login).then((res)=>{
+            if(res.data === "success"){
+                navigate("/Forgotpassword");
+            }
+            else{
+                setErrorMessage(res.data);
+            }
+        })
+
+    }
     function handleClick() {
         navigate('/Createacntuser');
     };
@@ -37,18 +59,19 @@ const Userlogin = () => {
                     <h2 className='title'>Users Log In</h2>
                     <div className='input-field'>
                         <FaRegUser className='input-icon'/>
-                        <input value={username} id='username' type='text' placeholder='Email/Username' onChange={(e) => setUsername(e.target.value)}/>
+                        <input value={email} id='username' type='text' placeholder='Email/Username' name='email' onChange={onInputChange}/>
                     </div>
                     <div className='input-field' onClick={() => setVisible(!visible)}>
                         <FiLock className='input-icon'/>
-                        <input  value={password} id='password' type={visible ? "text" : "password"} placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                        <input  value={password} id='password' type={visible ? "text" : "password"} placeholder='Password' name='password' onChange={onInputChange}/>
                         { visible ? <AiOutlineEye className='input-icon'/> : <AiOutlineEyeInvisible className='input-icon'/>}
                     </div>
                     <div className='pass'>
                         <label style={{fontSize:11,fontFamily:'sans-serif'}}><input style={{height:10,width:10}} type='checkbox' checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)}/>Remember me</label>
                         <h5><Link style={{textDecoration:'none'}} className='forgot-line' to="/Forgotpassword" >Forgot password ?</Link></h5>
                     </div>
-                    <button className='login-btn' type='submit'>Log In</button>
+                    <center>{errorMessage && <p style={{color:"red",fontWeight:"bold"}}>{errorMessage}</p>}</center>
+                    <button className='login-btn' type='submit' onClick={onSubmitLogin}>Log In</button>
                     <br></br>
                     <br></br>
                     <div className='newto'><h4 onClick={handleClick}>New to stylista? SIGN UP</h4></div>

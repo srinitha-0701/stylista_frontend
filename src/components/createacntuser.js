@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Useracnt.css';
 import { Link } from 'react-router-dom';
 
 
 const Createacntuser = () => {
+  let navigate = useNavigate();
   const [register,setRegister]=useState({
     firstname:"",
     lastname:"",
@@ -17,6 +19,7 @@ const Createacntuser = () => {
     password:"",
     conformpassword:"",
   });
+  const [errorMessage,setErrorMessage] = useState("");
   const {firstname,lastname,username,email,mobileNumber,gender,dateOfBirth,password,conformpassword}= register;
   const onInputChange = (e) => {
     setRegister({...register,[e.target.name] : e.target.value});
@@ -24,18 +27,30 @@ const Createacntuser = () => {
 
   const onSubmit = async (e)=>{
     e.preventDefault();
+    try{
     await axios.post(`http://localhost:5000/sign/post`,register)
     .then((res)=>{
-      console.log('successful')
-     
-    })
+      if(res.data==="success"){
+        navigate('/EmailVerification')
+      }
+      else{
+        setErrorMessage(res.data);
+      }
+     });
+    } catch (error){
+      if(error.response && error.response.data && error.response.data.errorMessage){
+        setErrorMessage(error.response.data.errorMessage);
+      } else{
+        setErrorMessage(['an error occurred . please try again']);
+      }
+    }
     
   }
   return (
       <div className='usercontainer'>
-        <h1>STYLISTA</h1>
         <form action=''>
           <h2>Create Account</h2>
+          <center>{errorMessage && <p style={{color:"red",fontWeight:"bold"}}>{errorMessage}</p>}</center>
           <div className='form-group'>
             <label htmlFor="">Firstname</label>
             <input type='text'  className="form-control" required="required" name="firstname" value={firstname} onChange={onInputChange}></input>

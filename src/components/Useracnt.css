@@ -47,6 +47,10 @@
     margin: 2px 0 5px 0; /*toreduce the height of the container*/
     padding: 0 10px;
 }
+.form-control::-webkit-outer-spin-button,
+.form-control::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
 .user-signup-btn{
     background-color: #848080;
     height: 30px;
